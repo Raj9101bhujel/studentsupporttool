@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium online tools for students - GPA calculator, attendance tracker, unit converter, and time management planner">
+    <title>Student Tools Hub - Academic Calculators & Planners</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Student Tools Hub",
+      "description": "Professional academic tools for students",
+      "applicationCategory": "EducationalApplication"
+    }
+    </script>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #f72585;
+            --white: #ffffff;
+            
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --rounded-sm: 4px;
+            --rounded-md: 8px;
+            --rounded-lg: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav a:hover {
+            opacity: 0.9;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(67, 97, 238, 0.9), rgba(67, 97, 238, 0.9)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border-radius: var(--rounded-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Tools Grid */
+        .tools-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Tool Cards */
+        .tool-card {
+            background-color: var(--white);
+            border-radius: var(--rounded-lg);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tool-card-header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .tool-card-header i {
+            font-size: 1.5rem;
+        }
+
+        .tool-card-header h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .tool-card-body {
+            padding: 1.5rem;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--rounded-sm);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: var(--rounded-md);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-danger {
+            background-color: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background-color: #e5177a;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Results */
+        .result {
+            margin-top: 1.5rem;
+            padding: 1.2rem;
+            background-color: var(--light);
+            border-radius: var(--rounded-md);
+            display: none;
+            border-left: 4px solid var(--primary);
+        }
+
+        .result.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Assignment Tracker */
+        .assignment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            background-color: var(--white);
+            border-radius: var(--rounded-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .assignment-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .assignment-item.high {
+            border-left: 4px solid var(--danger);
+        }
+
+        .assignment-item.medium {
+            border-left: 4px solid var(--warning);
+        }
+
+        .assignment-item.low {
+            border-left: 4px solid var(--success);
+        }
+
+        .assignment-info h3 {
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+
+        .assignment-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .progress-container {
+            margin-top: 0.8rem;
+            width: 100%;
+            background-color: var(--light-gray);
+            border-radius: var(--rounded-sm);
+            height: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: var(--rounded-sm);
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            display: block;
+            margin-top: 0.3rem;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .assignment-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Summary Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .summary-card {
+            padding: 1.2rem;
+            border-radius: var(--rounded-md);
+            color: var(--white);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .summary-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .summary-card p {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .summary-card.upcoming {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+        }
+
+        .summary-card.overdue {
+            background: linear-gradient(135deg, var(--danger), #ff3a8d);
+        }
+
+        .summary-card.completed {
+            background: linear-gradient(135deg, var(--success), #3ecdf7);
+        }
+
+        /* Ad Containers */
+        .ad-container {
+            margin: 2rem 0;
+            padding: 1rem;
+            background-color: var(--light);
+            border-radius: var(--rounded-md);
+            text-align: center;
+            overflow: hidden;
+            border: 1px dashed var(--light-gray);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: var(--light-gray);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            nav {
+                width: 100%;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding-top: 1rem;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 1.5rem;
+                right: 20px;
+            }
+            
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .assignment-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .assignment-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mt-4 { margin-top: 2rem; }
+        
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .mb-4 { margin-bottom: 2rem; }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>StudentTools</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#gpa-calculator">GPA Calculator</a></li>
+                    <li><a href="#attendance">Attendance</a></li>
+                    <li><a href="#converter">Unit Converter</a></li>
+                    <li><a href="#planner">Time Planner</a></li>
+                    <li><a href="#tracker">Deadline Tracker</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Academic Success Toolkit</h1>
+            <p>Premium tools designed to help students manage their academic workload, track progress, and achieve better results.</p>
+            <a href="#tools" class="cta-button">Explore Tools</a>
+        </div>
+    </section>
+    
+    <section class="tools-section" id="tools">
+        <div class="container">
+            <div class="section-title">
+                <h2>Academic Tools</h2>
+                <p>Our collection of essential calculators and planners to support your educational journey</p>
+            </div>
+            
+            <!-- AdSense Banner Ad (Top) -->
+            <div class="ad-container leaderboard">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                    crossorigin="anonymous"></script>
+                <!-- Your leaderboard ad unit -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                    data-ad-slot="YOUR_AD_UNIT_ID"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <div class="tools-grid">
+                <!-- GPA Calculator -->
+                <div class="tool-card" id="gpa-calculator">
+                    <div class="tool-card-header">
+                        <i class="fas fa-calculator"></i>
+                        <h3>GPA Calculator</h3>
+                    </div>
+                    <div class="tool-card-body">
+                        <form id="gpa-form" class="calculator-form">
+                            <div id="courses-container">
+                                <!-- Course rows will be added here dynamically -->
+                            </div>
+                            <button type="button" id="add-course" class="btn btn-outline btn-block mt-2">
+                                <i class="fas fa-plus"></i> Add Course
+                            </button>
+                            <button type="submit" class="btn btn-block mt-2">
+                                <i class="fas fa-calculator"></i> Calculate GPA
+                            </button>
+                            <div id="gpa-result" class="result">
+                                <h4>Your GPA Result</h4>
+                                <p>Your calculated GPA is: <strong id="gpa-value">0.00</strong></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Attendance Calculator -->
+                <div class="tool-card" id="attendance">
+                    <div class="tool-card-header">
+                        <i class="fas fa-user-check"></i>
+                        <h3>Attendance Calculator</h3>
+                    </div>
+                    <div class="tool-card-body">
+                        <form id="attendance-form" class="calculator-form">
+                            <div class="form-group">
+                                <label for="total-classes">Total Classes Held:</label>
+                                <input type="number" id="total-classes" class="form-control" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="attended-classes">Classes Attended:</label>
+                                <input type="number" id="attended-classes" class="form-control" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="desired-percentage">Desired Attendance %:</label>
+                                <input type="number" id="desired-percentage" class="form-control" min="1" max="100" value="75">
+                            </div>
+                            <button type="submit" class="btn btn-block">
+                                <i class="fas fa-chart-line"></i> Calculate
+                            </button>
+                            <div id="attendance-result" class="result">
+                                <h4>Attendance Results</h4>
+                                <p>Current: <strong id="current-percent">0</strong>%</p>
+                                <p>To reach <strong id="desired-percent-display">75</strong>%, attend <strong id="remaining-classes">0</strong> more classes</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Unit Converter -->
+                <div class="tool-card" id="converter">
+                    <div class="tool-card-header">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h3>Unit Converter</h3>
+                    </div>
+                    <div class="tool-card-body">
+                        <form id="converter-form" class="calculator-form">
+                            <div class="form-group">
+                                <label for="converter-category">Category:</label>
+                                <select id="converter-category" class="form-control">
+                                    <option value="length">Length</option>
+                                    <option value="weight">Weight</option>
+                                    <option value="temperature">Temperature</option>
+                                    <option value="volume">Volume</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="converter-value">Value:</label>
+                                <input type="number" id="converter-value" class="form-control" step="any" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="from-unit">From:</label>
+                                <select id="from-unit" class="form-control"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="to-unit">To:</label>
+                                <select id="to-unit" class="form-control"></select>
+                            </div>
+                            <button type="submit" class="btn btn-block">
+                                <i class="fas fa-sync-alt"></i> Convert
+                            </button>
+                            <div id="converter-result" class="result">
+                                <h4>Conversion Result</h4>
+                                <p id="converter-result-text"></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Time Management Planner -->
+                <div class="tool-card" id="planner">
+                    <div class="tool-card-header">
+                        <i class="fas fa-clock"></i>
+                        <h3>Time Planner</h3>
+                    </div>
+                    <div class="tool-card-body">
+                        <form id="planner-form" class="calculator-form">
+                            <div class="form-group">
+                                <label for="available-hours">Available Hours:</label>
+                                <input type="number" id="available-hours" class="form-control" min="1" max="24" value="24" step="0.5">
+                            </div>
+                            <div id="tasks-container">
+                                <!-- Task rows will be added here dynamically -->
+                            </div>
+                            <button type="button" id="add-task" class="btn btn-outline btn-block mt-2">
+                                <i class="fas fa-plus"></i> Add Task
+                            </button>
+                            <button type="submit" class="btn btn-block mt-2">
+                                <i class="fas fa-calendar-check"></i> Create Schedule
+                            </button>
+                            <div id="planner-result" class="result">
+                                <h4>Your Schedule</h4>
+                                <p>Total hours allocated: <strong id="total-allocated">0</strong></p>
+                                <p>Remaining hours: <strong id="remaining-hours">0</strong></p>
+                                <ul id="schedule-list" class="mt-2"></ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Assignment Deadline Tracker -->
+                <div class="tool-card" id="tracker">
+                    <div class="tool-card-header">
+                        <i class="fas fa-tasks"></i>
+                        <h3>Deadline Tracker</h3>
+                    </div>
+                    <div class="tool-card-body">
+                        <form id="tracker-form" class="calculator-form">
+                            <div class="form-group">
+                                <label for="assignment-name">Assignment Name:</label>
+                                <input type="text" id="assignment-name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="due-date">Due Date:</label>
+                                <input type="date" id="due-date" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="assignment-priority">Priority:</label>
+                                <select id="assignment-priority" class="form-control">
+                                    <option value="high">High</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="low">Low</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="assignment-progress">Progress (%):</label>
+                                <input type="number" id="assignment-progress" class="form-control" min="0" max="100" value="0">
+                            </div>
+                            <button type="submit" class="btn btn-block">
+                                <i class="fas fa-save"></i> Add Assignment
+                            </button>
+                        </form>
+                        <div id="tracker-summary" class="mt-3"></div>
+                        <div id="assignments-list" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AdSense Banner Ad (Bottom) -->
+            <div class="ad-container leaderboard">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                    crossorigin="anonymous"></script>
+                <!-- Your bottom banner ad unit -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                    data-ad-slot="YOUR_AD_UNIT_ID"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>StudentTools</h3>
+                    <p>Your comprehensive academic toolkit designed to help students succeed in their educational journey.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#gpa-calculator">GPA Calculator</a></li>
+                        <li><a href="#attendance">Attendance Calculator</a></li>
+                        <li><a href="#converter">Unit Converter</a></li>
+                        <li><a href="#planner">Time Planner</a></li>
+                        <li><a href="#tracker">Deadline Tracker</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Study Tips</a></li>
+                        <li><a href="#">Time Management</a></li>
+                        <li><a href="#">Productivity Tools</a></li>
+                        <li><a href="#">Academic Planning</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 StudentTools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Initialize all calculators and tools
+            initGPACalculator();
+            initAttendanceCalculator();
+            initUnitConverter();
+            initTimePlanner();
+            initDeadlineTracker();
+            
+            // Initialize analytics
+            initAnalytics();
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
+                    }
+                });
+            });
+        });
+
+        // GPA Calculator
+        function initGPACalculator() {
+            const form = document.getElementById('gpa-form');
+            if (!form) return;
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const courses = [];
+                const courseInputs = document.querySelectorAll('.course-row');
+                
+                courseInputs.forEach(row => {
+                    const grade = row.querySelector('.course-grade').value;
+                    const credits = parseFloat(row.querySelector('.course-credits').value);
+                    
+                    if (grade && credits) {
+                        courses.push({ grade, credits });
+                    }
+                });
+                
+                if (courses.length === 0) {
+                    alert('Please add at least one course');
+                    return;
+                }
+                
+                const gpa = calculateGPA(courses);
+                displayGPAResult(gpa);
+            });
+            
+            // Add course row dynamically
+            document.getElementById('add-course').addEventListener('click', function() {
+                const container = document.getElementById('courses-container');
+                const row = document.createElement('div');
+                row.className = 'course-row mt-2';
+                row.innerHTML = `
+                    <div class="form-group">
+                        <select class="course-grade form-control">
+                            <option value="">Select Grade</option>
+                            <option value="4.0">A (4.0)</option>
+                            <option value="3.7">A- (3.7)</option>
+                            <option value="3.3">B+ (3.3)</option>
+                            <option value="3.0">B (3.0)</option>
+                            <option value="2.7">B- (2.7)</option>
+                            <option value="2.3">C+ (2.3)</option>
+                            <option value="2.0">C (2.0)</option>
+                            <option value="1.7">C- (1.7)</option>
+                            <option value="1.0">D (1.0)</option>
+                            <option value="0.0">F (0.0)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="course-credits form-control" placeholder="Credits" min="0.5" step="0.5">
+                    </div>
+                    <button type="button" class="btn btn-danger btn-sm remove-course mt-1">
+                        <i class="fas fa-trash"></i> Remove
+                    </button>
+                `;
+                
+                container.appendChild(row);
+                
+                // Add remove functionality
+                row.querySelector('.remove-course').addEventListener('click', function() {
+                    container.removeChild(row);
+                });
+            });
+        }
+
+        function calculateGPA(courses) {
+            let totalPoints = 0;
+            let totalCredits = 0;
+            
+            courses.forEach(course => {
+                const gradePoints = parseFloat(course.grade);
+                const credits = parseFloat(course.credits);
+                
+                totalPoints += gradePoints * credits;
+                totalCredits += credits;
+            });
+            
+            return totalCredits > 0 ? totalPoints / totalCredits : 0;
+        }
+
+        function displayGPAResult(gpa) {
+            const resultDiv = document.getElementById('gpa-result');
+            const gpaValue = document.getElementById('gpa-value');
+            
+            gpaValue.textContent = gpa.toFixed(2);
+            resultDiv.classList.add('active');
+            
+            // SEO: Update page title with result
+            document.title = `Your GPA is ${gpa.toFixed(2)} | StudentTools`;
+            
+            // Track conversion for analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'gpa_calculated', {
+                    'value': gpa.toFixed(2)
+                });
+            }
+        }
+
+        // Attendance Calculator
+        function initAttendanceCalculator() {
+            const form = document.getElementById('attendance-form');
+            if (!form) return;
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const totalClasses = parseInt(document.getElementById('total-classes').value);
+                const attendedClasses = parseInt(document.getElementById('attended-classes').value);
+                const desiredPercentage = parseInt(document.getElementById('desired-percentage').value) || 75;
+                
+                if (totalClasses <= 0 || attendedClasses < 0 || attendedClasses > totalClasses) {
+                    alert('Please enter valid values');
+                    return;
+                }
+                
+                const currentPercentage = (attendedClasses / totalClasses) * 100;
+                const remainingClasses = calculateRemainingClasses(totalClasses, attendedClasses, desiredPercentage);
+                
+                displayAttendanceResult(currentPercentage, remainingClasses, desiredPercentage);
+            });
+        }
+
+        function calculateRemainingClasses(totalClasses, attendedClasses, desiredPercentage) {
+            if (desiredPercentage <= 0) return 0;
+            
+            const minRequired = Math.ceil((desiredPercentage / 100) * totalClasses);
+            return Math.max(0, minRequired - attendedClasses);
+        }
+
+        function displayAttendanceResult(currentPercentage, remainingClasses, desiredPercentage) {
+            const resultDiv = document.getElementById('attendance-result');
+            const currentPercentElem = document.getElementById('current-percent');
+            const remainingClassesElem = document.getElementById('remaining-classes');
+            const desiredPercentDisplay = document.getElementById('desired-percent-display');
+            
+            currentPercentElem.textContent = currentPercentage.toFixed(1);
+            remainingClassesElem.textContent = remainingClasses;
+            desiredPercentDisplay.textContent = desiredPercentage;
+            
+            resultDiv.classList.add('active');
+            
+            // Update meta description with result
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) {
+                metaDesc.content = `Your current attendance is ${currentPercentage.toFixed(1)}%. You need to attend ${remainingClasses} more classes to reach ${desiredPercentage}% attendance.`;
+            }
+        }
+
+        // Unit Converter
+        function initUnitConverter() {
+            const form = document.getElementById('converter-form');
+            if (!form) return;
+            
+            // Populate unit options
+            const categories = {
+                length: ['Meters', 'Kilometers', 'Centimeters', 'Millimeters', 'Miles', 'Yards', 'Feet', 'Inches'],
+                weight: ['Grams', 'Kilograms', 'Milligrams', 'Pounds', 'Ounces'],
+                temperature: ['Celsius', 'Fahrenheit', 'Kelvin'],
+                volume: ['Liters', 'Milliliters', 'Gallons', 'Quarts', 'Pints', 'Cups']
+            };
+            
+            const categorySelect = document.getElementById('converter-category');
+            const fromUnitSelect = document.getElementById('from-unit');
+            const toUnitSelect = document.getElementById('to-unit');
+            
+            // Populate categories
+            for (const category in categories) {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                categorySelect.appendChild(option);
+            }
+            
+            // Update units when category changes
+            categorySelect.addEventListener('change', function() {
+                const selectedCategory = this.value;
+                const units = categories[selectedCategory] || [];
+                
+                // Clear existing options
+                fromUnitSelect.innerHTML = '';
+                toUnitSelect.innerHTML = '';
+                
+                // Add new options
+                units.forEach(unit => {
+                    const fromOption = document.createElement('option');
+                    fromOption.value = unit;
+                    fromOption.textContent = unit;
+                    
+                    const toOption = document.createElement('option');
+                    toOption.value = unit;
+                    toOption.textContent = unit;
+                    
+                    fromUnitSelect.appendChild(fromOption);
+                    toUnitSelect.appendChild(toOption);
+                });
+                
+                // Set different default "to" unit if possible
+                if (units.length > 1) {
+                    toUnitSelect.selectedIndex = 1;
+                }
+            });
+            
+            // Trigger initial population
+            categorySelect.dispatchEvent(new Event('change'));
+            
+            // Handle conversion
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const value = parseFloat(document.getElementById('converter-value').value);
+                const fromUnit = fromUnitSelect.value;
+                const toUnit = toUnitSelect.value;
+                const category = categorySelect.value;
+                
+                if (isNaN(value)) {
+                    alert('Please enter a valid number');
+                    return;
+                }
+                
+                const result = convertUnit(value, fromUnit, toUnit, category);
+                displayConversionResult(value, fromUnit, result, toUnit);
+            });
+        }
+
+        function convertUnit(value, fromUnit, toUnit, category) {
+            // Conversion formulas for different categories
+            const conversions = {
+                length: {
+                    'Meters': 1,
+                    'Kilometers': 1000,
+                    'Centimeters': 0.01,
+                    'Millimeters': 0.001,
+                    'Miles': 1609.34,
+                    'Yards': 0.9144,
+                    'Feet': 0.3048,
+                    'Inches': 0.0254
+                },
+                weight: {
+                    'Grams': 1,
+                    'Kilograms': 1000,
+                    'Milligrams': 0.001,
+                    'Pounds': 453.592,
+                    'Ounces': 28.3495
+                },
+                temperature: {
+                    'Celsius': {
+                        toFahrenheit: (c) => c * 9/5 + 32,
+                        toKelvin: (c) => c + 273.15
+                    },
+                    'Fahrenheit': {
+                        toCelsius: (f) => (f - 32) * 5/9,
+                        toKelvin: (f) => (f - 32) * 5/9 + 273.15
+                    },
+                    'Kelvin': {
+                        toCelsius: (k) => k - 273.15,
+                        toFahrenheit: (k) => (k - 273.15) * 9/5 + 32
+                    }
+                },
+                volume: {
+                    'Liters': 1,
+                    'Milliliters': 0.001,
+                    'Gallons': 3.78541,
+                    'Quarts': 0.946353,
+                    'Pints': 0.473176,
+                    'Cups': 0.24
+                }
+            };
+            
+            // Handle temperature separately
+            if (category === 'temperature') {
+                if (fromUnit === toUnit) return value;
+                
+                const tempFunc = conversions.temperature[fromUnit][`to${toUnit}`];
+                return tempFunc ? tempFunc(value) : value;
+            }
+            
+            // Convert to base unit first
+            const baseValue = value * conversions[category][fromUnit];
+            // Convert to target unit
+            return baseValue / conversions[category][toUnit];
+        }
+
+        function displayConversionResult(value, fromUnit, result, toUnit) {
+            const resultDiv = document.getElementById('converter-result');
+            const resultText = document.getElementById('converter-result-text');
+            
+            resultText.textContent = `${value} ${fromUnit} = ${result.toFixed(4)} ${toUnit}`;
+            resultDiv.classList.add('active');
+            
+            // Update Open Graph meta tags for social sharing
+            updateMetaTags({
+                title: `${value} ${fromUnit} to ${toUnit} Conversion`,
+                description: `Converted ${value} ${fromUnit} to ${result.toFixed(4)} ${toUnit}`,
+                url: window.location.href
+            });
+        }
+
+        // Time Management Planner
+        function initTimePlanner() {
+            const form = document.getElementById('planner-form');
+            if (!form) return;
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const tasks = [];
+                const taskInputs = document.querySelectorAll('.task-row');
+                
+                taskInputs.forEach(row => {
+                    const name = row.querySelector('.task-name').value;
+                    const hours = parseFloat(row.querySelector('.task-hours').value);
+                    const priority = row.querySelector('.task-priority').value;
+                    
+                    if (name && !isNaN(hours)) {
+                        tasks.push({ name, hours, priority });
+                    }
+                });
+                
+                if (tasks.length === 0) {
+                    alert('Please add at least one task');
+                    return;
+                }
+                
+                const availableHours = parseFloat(document.getElementById('available-hours').value) || 24;
+                const schedule = createSchedule(tasks, availableHours);
+                displaySchedule(schedule, availableHours);
+            });
+            
+            // Add task row dynamically
+            document.getElementById('add-task').addEventListener('click', function() {
+                const container = document.getElementById('tasks-container');
+                const row = document.createElement('div');
+                row.className = 'task-row mt-2';
+                row.innerHTML = `
+                    <div class="form-group">
+                        <input type="text" class="task-name form-control" placeholder="Task name">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="task-hours form-control" placeholder="Hours needed" min="0.25" step="0.25">
+                    </div>
+                    <div class="form-group">
+                        <select class="task-priority form-control">
+                            <option value="high">High Priority</option>
+                            <option value="medium" selected>Medium Priority</option>
+                            <option value="low">Low Priority</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-danger btn-sm remove-task mt-1">
+                        <i class="fas fa-trash"></i> Remove
+                    </button>
+                `;
+                
+                container.appendChild(row);
+                
+                // Add remove functionality
+                row.querySelector('.remove-task').addEventListener('click', function() {
+                    container.removeChild(row);
+                });
+            });
+        }
+
+        function createSchedule(tasks, availableHours) {
+            // Sort tasks by priority (high to low)
+            const sortedTasks = [...tasks].sort((a, b) => {
+                const priorityOrder = { high: 3, medium: 2, low: 1 };
+                return priorityOrder[b.priority] - priorityOrder[a.priority];
+            });
+            
+            let remainingHours = availableHours;
+            const schedule = [];
+            
+            for (const task of sortedTasks) {
+                const allocatedHours = Math.min(task.hours, remainingHours);
+                if (allocatedHours > 0) {
+                    schedule.push({
+                        name: task.name,
+                        allocatedHours: allocatedHours,
+                        priority: task.priority,
+                        completed: false
+                    });
+                    remainingHours -= allocatedHours;
+                }
+            }
+            
+            return {
+                schedule,
+                totalAllocated: availableHours - remainingHours,
+                remainingHours
+            };
+        }
+
+        function displaySchedule(result, availableHours) {
+            const resultDiv = document.getElementById('planner-result');
+            const scheduleList = document.getElementById('schedule-list');
+            const allocatedElem = document.getElementById('total-allocated');
+            const remainingElem = document.getElementById('remaining-hours');
+            
+            // Clear previous results
+            scheduleList.innerHTML = '';
+            
+            // Add new schedule items
+            result.schedule.forEach(task => {
+                const li = document.createElement('li');
+                li.className = `assignment-item ${task.priority}`;
+                
+                const priorityColors = {
+                    high: 'danger',
+                    medium: 'warning',
+                    low: 'success'
+                };
+                
+                const priorityText = {
+                    high: 'High',
+                    medium: 'Medium',
+                    low: 'Low'
+                };
+                
+                li.innerHTML = `
+                    <div class="assignment-info">
+                        <h3>${task.name}</h3>
+                        <p>${task.allocatedHours} hours (${priorityText[task.priority]} Priority)</p>
+                    </div>
+                `;
+                
+                scheduleList.appendChild(li);
+            });
+            
+            allocatedElem.textContent = result.totalAllocated.toFixed(2);
+            remainingElem.textContent = result.remainingHours.toFixed(2);
+            
+            resultDiv.classList.add('active');
+            
+            // Generate a shareable link
+            generateShareableLink('planner', {
+                availableHours,
+                tasks: result.schedule.map(t => ({
+                    n: t.name,
+                    h: t.allocatedHours,
+                    p: t.priority
+                }))
+            });
+        }
+
+        // Assignment Deadline Tracker
+        function initDeadlineTracker() {
+            const form = document.getElementById('tracker-form');
+            if (!form) return;
+            
+            // Load saved assignments from localStorage
+            loadSavedAssignments();
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const assignmentName = document.getElementById('assignment-name').value;
+                const dueDate = document.getElementById('due-date').value;
+                const priority = document.getElementById('assignment-priority').value;
+                const progress = parseInt(document.getElementById('assignment-progress').value);
+                
+                if (!assignmentName || !dueDate) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+                
+                addAssignment(assignmentName, dueDate, priority, progress);
+                form.reset();
+            });
+            
+            // Handle assignment deletion
+            document.getElementById('assignments-list').addEventListener('click', function(e) {
+                if (e.target.classList.contains('delete-assignment') || 
+                    e.target.closest('.delete-assignment')) {
+                    const assignmentId = e.target.closest('.assignment-item').dataset.id;
+                    deleteAssignment(assignmentId);
+                }
+            });
+        }
+
+        function addAssignment(name, dueDate, priority, progress) {
+            const assignment = {
+                id: Date.now().toString(),
+                name,
+                dueDate,
+                priority,
+                progress: progress || 0,
+                createdAt: new Date().toISOString()
+            };
+            
+            // Get existing assignments
+            const assignments = JSON.parse(localStorage.getItem('assignments')) || [];
+            assignments.push(assignment);
+            
+            // Save to localStorage
+            localStorage.setItem('assignments', JSON.stringify(assignments));
+            
+            // Update UI
+            renderAssignment(assignment);
+            updateDeadlineSummary();
+        }
+
+        function deleteAssignment(id) {
+            // Get existing assignments
+            let assignments = JSON.parse(localStorage.getItem('assignments')) || [];
+            
+            // Filter out the deleted assignment
+            assignments = assignments.filter(a => a.id !== id);
+            
+            // Save to localStorage
+            localStorage.setItem('assignments', JSON.stringify(assignments));
+            
+            // Remove from UI
+            document.querySelector(`.assignment-item[data-id="${id}"]`)?.remove();
+            updateDeadlineSummary();
+        }
+
+        function loadSavedAssignments() {
+            const assignments = JSON.parse(localStorage.getItem('assignments')) || [];
+            const list = document.getElementById('assignments-list');
+            
+            // Clear existing items (except template)
+            list.innerHTML = '';
+            
+            if (assignments.length === 0) {
+                list.innerHTML = '<p class="text-center">No assignments added yet.</p>';
+                return;
+            }
+            
+            // Sort by due date (earliest first)
+            assignments.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+            
+            // Render each assignment
+            assignments.forEach(assignment => {
+                renderAssignment(assignment);
+            });
+            
+            updateDeadlineSummary();
+        }
+
+        function renderAssignment(assignment) {
+            const list = document.getElementById('assignments-list');
+            
+            // Remove "no assignments" message if present
+            if (list.querySelector('p')) {
+                list.innerHTML = '';
+            }
+            
+            const dueDate = new Date(assignment.dueDate);
+            const now = new Date();
+            const daysLeft = Math.ceil((dueDate - now) / (1000 * 60 * 60 * 24));
+            
+            const item = document.createElement('div');
+            item.className = `assignment-item ${assignment.priority}`;
+            item.dataset.id = assignment.id;
+            
+            item.innerHTML = `
+                <div class="assignment-info">
+                    <h3>${assignment.name}</h3>
+                    <p>Due: ${dueDate.toLocaleDateString()} (${daysLeft} ${daysLeft === 1 ? 'day' : 'days'} left)</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: ${assignment.progress}%"></div>
+                    </div>
+                    <span class="progress-text">${assignment.progress}% complete</span>
+                </div>
+                <div class="assignment-actions">
+                    <button class="btn btn-danger btn-sm delete-assignment">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+            
+            list.appendChild(item);
+        }
+
+        function updateDeadlineSummary() {
+            const assignments = JSON.parse(localStorage.getItem('assignments')) || [];
+            const summaryDiv = document.getElementById('tracker-summary');
+            
+            if (assignments.length === 0) {
+                summaryDiv.innerHTML = '<p class="text-center">No assignments to track.</p>';
+                return;
+            }
+            
+            const now = new Date();
+            const upcoming = assignments.filter(a => {
+                const dueDate = new Date(a.dueDate);
+                return dueDate > now;
+            });
+            
+            const overdue = assignments.filter(a => {
+                const dueDate = new Date(a.dueDate);
+                return dueDate < now && a.progress < 100;
+            });
+            
+            const completed = assignments.filter(a => a.progress >= 100);
+            
+            summaryDiv.innerHTML = `
+                <div class="summary-grid">
+                    <div class="summary-card upcoming">
+                        <h3>Upcoming</h3>
+                        <p>${upcoming.length}</p>
+                    </div>
+                    <div class="summary-card overdue">
+                        <h3>Overdue</h3>
+                        <p>${overdue.length}</p>
+                    </div>
+                    <div class="summary-card completed">
+                        <h3>Completed</h3>
+                        <p>${completed.length}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Helper Functions
+        function updateMetaTags({ title, description, url }) {
+            // Update standard meta tags
+            if (title) {
+                document.title = title;
+                const ogTitle = document.querySelector('meta[property="og:title"]');
+                if (ogTitle) ogTitle.content = title;
+            }
+            
+            if (description) {
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) metaDesc.content = description;
+                
+                const ogDesc = document.querySelector('meta[property="og:description"]');
+                if (ogDesc) ogDesc.content = description;
+            }
+            
+            if (url) {
+                const ogUrl = document.querySelector('meta[property="og:url"]');
+                if (ogUrl) ogUrl.content = url;
+            }
+        }
+
+        function generateShareableLink(tool, data) {
+            // This would generate a URL with the data encoded
+            console.log(`Shareable link for ${tool} with data:`, data);
+        }
+
+        // Initialize analytics
+        function initAnalytics() {
+            // Google Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('config', 'YOUR_GA_TRACKING_ID', {
+                    page_title: document.title,
+                    page_location: window.location.href,
+                    page_path: window.location.pathname
+                });
+            }
+            
+            // Track tool usage
+            document.querySelectorAll('.tool-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'tool_click', {
+                            tool_name: card.id
+                        });
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
